@@ -12,6 +12,8 @@ func retrieveRaftNode(context.Context, uint64) (raft_api.Raft, error) {
 	return raft_api.Raft{}, nil
 }
 
+// serveRaftRequests will run in the background and will provide other processes
+// with the raft capability of the current process.
 func serveRaftRequests(ctx context.Context, bc csp.BootContext, raftNode raft_api.Raft) {
 	var attrReq csp.AttrRequest
 	var err error
